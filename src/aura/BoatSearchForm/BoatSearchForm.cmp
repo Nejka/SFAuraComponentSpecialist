@@ -1,0 +1,33 @@
+<!--
+ - Created by nejka on 26/04/2020.
+ -->
+
+<aura:component description="BoatSearchForm" controller="recordTypeLoader" implements="flexipage:availableForAllPageTypes, lightning:isUrlAddressable">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="showButton" type="Boolean" />
+    <aura:attribute name="listOptions" type="List" default="[]"/>
+    <aura:registerEvent name="FormSubmit" type="c:FormSubmit"/>
+
+    <lightning:select name="selectItem" label="Select an item" >
+        <option value="">choose one...</option>
+        <option value="1">one</option>
+        <option value="2">two</option>
+    </lightning:select>
+
+    <div class="container">
+        show button {!v.showButton}
+        <lightning:layout horizontalAlign="center">
+            <lightning:select name="selectBoat" label="" aura:id="selectBoat" onchange="{!c.doSomething}" >
+                <aura:iteration items="{!v.listOptions}" var="item">
+                    <option text="{!item.label}" value="{!item.value}"/>
+                </aura:iteration>
+
+            </lightning:select>
+            <aura:if isTrue="{!v.showButton}">
+                <lightning:button variant="neutral" label="New" title="Brand action" onclick="{! c.createBoat }" />
+            </aura:if>
+
+            <lightning:button variant="brand" label="Search" title="Brand action" onclick="{! c.onFormSubmit }"/>
+            </lightning:layout>
+        </div>
+</aura:component>

@@ -1,0 +1,25 @@
+<!--
+ - Created by nejka on 26/04/2020.
+ -->
+
+<aura:component description="BoatSearch" implements="force:appHostable, flexipage:availableForAllPageTypes, lightning:isUrlAddressable">
+
+    <aura:handler name="FormSubmit" event="c:FormSubmit"
+                  action="{!c.onFormSubmit}"/>
+
+    <article class="slds-card">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+<c:BoatSearchForm />
+
+            </header>
+        </div>
+    </article>
+    <article class="slds-card">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <c:BoatSearchResults aura:id = 'BoatSearch'/>
+            </header>
+        </div>
+    </article>
+</aura:component>

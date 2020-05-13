@@ -1,0 +1,40 @@
+<!--
+ - Created by nejka on 26/04/2020.
+ -->
+
+<aura:component description="BoatSearchResults" controller = "BoatSearchResults" implements="force:appHostable, flexipage:availableForAllPageTypes, lightning:isUrlAddressable">
+<!--    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>-->
+    <aura:attribute name="boatList" type="boat__c[]"/>
+    <aura:attribute name="showError" type="Boolean" default="true"/>
+
+    <aura:method name="search">
+<!--        <aura:attribute name="message" type="String" default="default message" />-->
+    </aura:method>
+
+    <aura:if isTrue="{!v.showError}">
+        <lightning:layout verticalAlign="center" horizontalAlign="center">
+        <div class="slds-notify slds-notify_toast slds-theme_error">
+            <span class="slds-assistive-text">error</span>
+            <div class="slds-notify__content">
+                <p class="slds-align_absolute-center">No boats found</p>
+                {!v.showError}
+            </div>
+        </div>
+        </lightning:layout>
+    </aura:if>
+
+    <aura:if isTrue="{! !v.showError}">
+        {! !v.showError}
+        <lightning:layout multipleRows="true">
+
+
+            <aura:iteration items="{!v.boatList}" var="boat">
+                <lightning:layoutItem padding="around-small" size="3">
+                    <c:BoatTile boat="{! v.boat }"></c:BoatTile>
+                </lightning:layoutItem>
+            </aura:iteration>
+
+        </lightning:layout>
+    </aura:if>
+
+</aura:component>

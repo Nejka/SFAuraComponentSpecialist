@@ -1,0 +1,17 @@
+<!--
+ - Created by nejka on 27/04/2020.
+ -->
+
+<aura:component description="BoatTile" controller = "BoatSearchResults" implements="force:appHostable, flexipage:availableForAllPageTypes, lightning:isUrlAddressable">
+    <aura:attribute name="boat" type="boat__c"/>
+
+    <lightning:button  class = "tile">
+<!--        <div style={!'background-image: url('+v.boats.Picture__c+')'} class="innertile">-->
+        <div style="{! 'background-image: url(' + v.boats.Picture__c + ')'}" class="innertile">
+            <div class="lower-third">
+                <h1 class="slds-truncate">[output contact name here]</h1>
+            </div>
+        </div>
+    </lightning:button>
+
+</aura:component>
